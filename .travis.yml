@@ -1,0 +1,24 @@
+sudo: required
+language: generic 
+
+services:
+  - docker
+
+before_install:
+  - docker build -t patbowe/react-test -f ./client/Dockerfile.dev ./client
+
+script: 
+  - docker run patbowe/react-test npm test -- --coverage
+ 
+after_success:
+  - docker build -t patbowe/multi-client ./client
+  - docker build -t patbowe/multi-nginx ./nginx
+  - docker build -t patbowe/multi-server ./server
+  - docker build -t patbowe/multi-worker ./worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdi
+  # Take those images and push them to docker hub
+  - docker push patbowe/multi-client
+  - docker push patbowe/multi-nginx
+  - docker push patbowe/multi-server
+  - docker push patbowe/multi-worker
