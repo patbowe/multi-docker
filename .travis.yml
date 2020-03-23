@@ -12,9 +12,9 @@ services:
  
 after_success:
   - docker build ./client -t patbowe/multi-client -f ./client/Dockerfile
-  - docker build -t pbowe/multi-nginx ./nginx
-  - docker build -t pbowe/multi-server ./server
-  - docker build -t pbowe/multi-worker ./worker
+  #- docker build -t pbowe/multi-nginx ./nginx
+  #- docker build -t pbowe/multi-server ./server
+  #- docker build -t pbowe/multi-worker ./worker
   - docker images
   # Log in to the docker CLI
   # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
