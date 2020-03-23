@@ -12,9 +12,9 @@ services:
  
 after_success:
   - docker build ./client -t patbowe/multi-client -f ./client/Dockerfile
-  - docker build -t patbowe/multi-nginx ./nginx
-  - docker build -t patbowe/multi-server ./server
-  - docker build -t patbowe/multi-worker ./worker
+  - docker build -t pbowe/multi-nginx ./nginx
+  - docker build -t pbowe/multi-server ./server
+  - docker build -t pbowe/multi-worker ./worker
   - docker images
   - docker tag patbowe/multi-worker patbowe/proutman:latest
   - docker images
@@ -22,7 +22,7 @@ after_success:
   # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin docker.io
   # Take those images and push them to docker hub repos
-  - docker push patbowe/multi-client:latest
-  - docker push docker.io/patbowe/multi-nginx:latest
-  - docker push docker.io/patbowe/multi-server:latest
-  - docker push docker.io/patbowe/proutman:latest
+  - docker push pbowe/multi-client
+  - docker push pbowe/multi-nginx:latest
+  - docker push pbowe/multi-server:latest
+  - docker push pbowe/proutman:latest
