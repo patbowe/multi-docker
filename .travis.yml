@@ -11,7 +11,7 @@ script:
   - docker run patbowe/react-test npm test -- --coverage
  
 after_success:
-  - docker build -t patbowe/multi-client -f ./client/Dockerfile ./client
+  - docker build ./client -t patbowe/multi-client -f ./client/Dockerfile
   - docker build -t patbowe/multi-nginx ./nginx
   - docker build -t patbowe/multi-server ./server
   - docker build -t patbowe/multi-worker ./worker
