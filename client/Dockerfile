@@ -1,8 +1,10 @@
 FROM node:alpine as builder
 WORKDIR '/app'
 COPY ./package.json ./
-RUN npm install
 COPY ./default.conf ./
+COPY ../nginx/default.conf ./
+RUN ls -l ../nginx
+#RUN npm install
 COPY . .
 RUN npm run build
 
