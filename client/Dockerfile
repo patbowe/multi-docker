@@ -1,7 +1,6 @@
 FROM node:alpine as builder
 WORKDIR '/app'
 COPY ./package.json ./
-COPY ./default.conf ./
 RUN ls -l
 #RUN npm install
 COPY . .
