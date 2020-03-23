@@ -16,6 +16,7 @@ after_success:
   - docker build -t patbowe/multi-server ./server
   - docker build -t patbowe/multi-worker ./worker
   - docker images
+  - docker tag patbowe/multi-worker patbowe/proutman:latest
   # Log in to the docker CLI
   # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin docker.io
@@ -23,4 +24,4 @@ after_success:
   - docker push patbowe/multi-client:latest
   - docker push patbowe/multi-nginx:latest
   - docker push patbowe/multi-server:latest
-  - docker push patbowe/multi-worker:latest
+  - docker push patbowe/proutman:latest
