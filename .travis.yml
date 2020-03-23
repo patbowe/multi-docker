@@ -5,19 +5,18 @@ services:
   - docker
 
 #before_install:
-#  - docker build -t patbowe/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t patbowe/react-test -f ./client/Dockerfile.dev ./client
 
 #script: 
-#  - docker run patbowe/react-test npm test -- --coverage
+  - docker run patbowe/react-test npm test -- --coverage
  
 after_success:
   - docker build ./client -t patbowe/multi-client -f ./client/Dockerfile
-  #- docker build -t pbowe/multi-nginx ./nginx
-  #- docker build -t pbowe/multi-server ./server
-  #- docker build -t pbowe/multi-worker ./worker
+  - docker build -t pbowe/multi-nginx ./nginx
+  - docker build -t pbowe/multi-server ./server
+  - docker build -t pbowe/multi-worker ./worker
   - docker images
   # Log in to the docker CLI
-  # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub repos
   - docker push pbowe/multi-client
