@@ -19,7 +19,7 @@ after_success:
   # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub repos
-  - docker push patbowe/multi-client
-  - docker push patbowe/multi-nginx
-  - docker push patbowe/multi-server
-  - docker push patbowe/multi-worker
+  - docker push patbowe/multi-client:latest
+  - docker push patbowe/multi-nginx:latest
+  - docker push patbowe/multi-server:latest
+  - docker push patbowe/multi-worker:latest
