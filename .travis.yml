@@ -4,17 +4,18 @@ language: generic
 services:
   - docker
 
-before_install:
-  - docker build -t patbowe/react-test -f ./client/Dockerfile.dev ./client
+#before_install:
+#  - docker build -t patbowe/react-test -f ./client/Dockerfile.dev ./client
 
-script: 
-  - docker run patbowe/react-test npm test -- --coverage
+#script: 
+#  - docker run patbowe/react-test npm test -- --coverage
  
 after_success:
   - docker build ./client -t patbowe/multi-client -f ./client/Dockerfile
   - docker build -t patbowe/multi-nginx ./nginx
   - docker build -t patbowe/multi-server ./server
   - docker build -t patbowe/multi-worker ./worker
+  - docker images
   # Log in to the docker CLI
   # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin docker.io
